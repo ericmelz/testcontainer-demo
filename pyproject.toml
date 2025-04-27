@@ -1,0 +1,14 @@
+[project]
+name = "testcontainer-demo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.12",
+    "httpx>=0.28.1",
+    "pytest>=8.3.5",
+    "redis>=5.2.1",
+    "testcontainers>=4.10.0",
+    "uvicorn>=0.34.2",
+]
