@@ -36,7 +36,6 @@ def app(redis_container):
     import testcontainer_demo.app
     testcontainer_demo.app.r = new_redis
 
-    print(f"***{fastapi_app.r=}")
     return fastapi_app
 
 

@@ -19,7 +19,6 @@ app = FastAPI(lifespan=lifespan)
 
 @app.post("/set/{key}/{value}")
 def set_key(key: str, value: str):
-    print(f"***{r=}")
     r.set(key, value)
     return {"message": f"Key {key} set to {value}"}
 
