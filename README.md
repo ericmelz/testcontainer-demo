@@ -1,6 +1,7 @@
 # Testcontainer Demo
 Demos testcontainer package
 ```bash
+uv venv
 uv pip install -e .
-uv pytest
+uv run pytest
 ```
