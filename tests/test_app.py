@@ -22,20 +22,17 @@ def redis_container():
 @pytest.fixture(scope="module")
 def app(redis_container):
     """Override the FastAPI app's Redis connection."""
-    from testcontainer_demo.app import app as fastapi_app
+    from testcontainer_demo.app import app as fastapi_app, get_redis_client
     import redis
 
     host, port = redis_container
     new_redis = redis.Redis(host=host, port=int(port), decode_responses=True)
 
-    # update the global r variable
-    global r
-    fastapi_app.r = new_redis
+    # override the Redis dependency
+    def override_get_redis_client():
+        return new_redis
 
-    # Also update the module-level r
-    import testcontainer_demo.app
-    testcontainer_demo.app.r = new_redis
-
+    fastapi_app.dependency_overrides[get_redis_client] = override_get_redis_client
     return fastapi_app
 
 
